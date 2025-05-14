@@ -5,6 +5,12 @@
 .env.production.local
 .env.staging
 !.env.example
+
+# Allure reports
+allure-results/
+allure-report/
+
+
 # Playwright
 node_modules/
 /test-results/

@@ -15,12 +15,32 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
 
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['list'],
+    [
+      'allure-playwright',
+      {
+        detail: true,
+        outputFolder: 'allure-results',
+        suiteTitle: false,
+        environmentInfo: {
+
+          NODE_VERSION: process.version,
+          OS: process.platform,
+          APP_ENV: appConfig.appEnv,
+          BASE_URL: appConfig.baseURL
+        }
+      }
+    ]
+  ],
 
   use: {
     // headless: false,
     trace: 'on-first-retry',
-    baseURL: appConfig.baseURL
+    baseURL: appConfig.baseURL,
+    screenshot:"only-on-failure",
+    video:"retain-on-failure"
   },
 
   /* Configure projects for major browsers */
@@ -28,37 +48,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] }
+    },
+
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] }
+    },
+
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] }
     }
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] }
-    // },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] }
-    // }
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ]
 
   /* Run your local dev server before starting the tests */

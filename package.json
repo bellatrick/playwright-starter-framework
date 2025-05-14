@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
   "scripts": {
     "test": "cross-env NODE_ENV=development playwright test",
     "test:dev": "cross-env NODE_ENV=development playwright test",
     "test:staging": "cross-env NODE_ENV=staging playwright test",
-
     "test:smoke": "cross-env NODE_ENV=development playwright test --grep '@smoke'",
     "test:smoke:staging": "cross-env NODE_ENV=staging playwright test --grep '@smoke'",
-
     "test:regression": "cross-env NODE_ENV=development playwright test --grep '@regression'",
     "test:regression:staging": "cross-env NODE_ENV=staging playwright test --grep '@regression'",
-
     "test:api": "cross-env NODE_ENV=development playwright test --grep '@api-core'",
     "test:ui": "cross-env NODE_ENV=development playwright test --grep-invert '@api-core'",
     "test:report": "playwright show-report"
@@ -25,6 +21,8 @@
   "devDependencies": {
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.17",
+    "allure-commandline": "^2.34.0",
+    "allure-playwright": "^3.2.2",
     "cross-env": "^7.0.3"
   },
   "dependencies": {

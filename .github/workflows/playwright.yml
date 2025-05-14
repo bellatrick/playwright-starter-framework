@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, master]
   workflow_dispatch:
-    
+
 jobs:
   run-tests:
     name: Run Playwright Tests (Node ${{ matrix.node-version }})
@@ -44,7 +44,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Check if browsers are installed (Debugging)
-        run: ls la ~/.cache/ms-playwright
+        run: ls -la ~/.cache/ms-playwright
 
       - name: Run Smoke Tests (PR)
         if: ${{ github.event_name == 'pull_request' }}
