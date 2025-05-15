@@ -60,7 +60,7 @@ jobs:
         env:
           CI: true
 
-      - name: Generatr Allure Report
+      - name: Generate Allure Report
         if: always()
         run: npm run allure:generate
 
