@@ -13,7 +13,11 @@
     "test:regression:staging": "cross-env NODE_ENV=staging playwright test --grep '@regression'",
     "test:api": "cross-env NODE_ENV=development playwright test --grep '@api-core'",
     "test:ui": "cross-env NODE_ENV=development playwright test --grep-invert '@api-core'",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "allure-generate":"allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "test:smoke:allure": "npm run test:smoke && npm run allure:generate"
   },
   "keywords": [],
   "author": "",

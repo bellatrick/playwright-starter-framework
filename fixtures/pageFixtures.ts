@@ -1,4 +1,5 @@
-import { APIRequestContext, test as baseTest } from '@playwright/test';import { HomePage } from '../pages/Homepage';
+import { APIRequestContext, test as baseTest } from '@playwright/test';
+import { HomePage } from '../pages/Homepage';
 import { LoginPage } from '../pages/LoginPage';
 import { SecureAreaPage } from '../pages/SecureArea';
 import { PostsAPI } from '../apiTests/jsonplaceholder/postsApi';
